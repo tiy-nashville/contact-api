@@ -8,29 +8,15 @@
   <title>AdonisJs - Node.Js MVC Framework</title>
 
   <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,300,600,700,900' rel='stylesheet' type='text/css'>
-  <link rel="icon" href="/assets/favicon.png" type="image/x-icon">
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.1/css/bulma.css">
 </head>
 <body>
 
   <section>
-    <div class="__wrapper">
-      {% block content %}{% endblock %}
-
-      {% block footer %}
-        <div class="__footer">
-          <ul>
-            <li>
-              <a href="https://twitter.com/intent/tweet?url=http://adonisjs.com&text=I am using AdonisJs, a practical MVC framework for nodejs&hashtags=nodejs,adonisframework" target="_blank">
-                <img src="/assets/twitter.svg">
-              </a>
-            </li>
-            <li>
-              <a href="https://github.com/adonisjs/adonis-framework" target="_blank"><img src="/assets/github.svg"></a>
-            </li>
-          </ul>
-        </div>
-      {% endblock %}
+    <div class="section">
+      <div class="container">
+        {% block content %}{% endblock %}
+      </div>
     </div>
   </section>
 

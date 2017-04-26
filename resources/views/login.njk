@@ -1,0 +1,18 @@
+{% extends "master" %}
+
+{% block content %}
+  <form action="/login" method="POST" class="card">
+    {{ csrfField }}
+    <h2 class="card-header">Login</h2>
+    <div class="card-content">
+      <p class="control">
+        <input placeholder="email" type="text" class="input" name="email">
+      </p>
+      <p class="control">
+        <input placeholder="password" type="password" class="input" name="password">
+      </p>
+    </div>
+
+    <button type="submit" class="button is-primary is-fullwidth">Login</button>
+  </form>
+{% endblock %}

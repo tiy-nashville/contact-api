@@ -20,6 +20,24 @@ const Route = use('Route')
 Route.on('/').render('welcome')
 
 const Message = use('App/Model/Message')
+const User = use('App/Model/User')
+const Hash = use('Hash')
+
+Route.get('/login', function *(request, response) {
+  yield response.sendView('login')
+})
+
+Route.post('/login', function *(request, response) {
+  const { email, password } = request.only('email', 'password')
+
+  const login = yield request.auth.attempt(email, password)
+
+    if (login) {
+      return response.redirect('/crm/messages')
+    }
+
+    response.unauthorized('Invalid credentails')
+})
 
 Route.post('/messages', function *(request, response) {
   const params = request.only('email', 'name', 'message')

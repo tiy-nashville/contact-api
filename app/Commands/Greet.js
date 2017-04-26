@@ -11,7 +11,7 @@ class Greet extends Command {
    * @return {String}
    */
   get signature () {
-    return 'greet {name}'
+    return 'make:user'
   }
 
   /**
@@ -21,7 +21,7 @@ class Greet extends Command {
    * @return {String}
    */
   get description () {
-    return 'Greet a user with a name'
+    return 'Make a new user'
   }
 
   /**
@@ -32,7 +32,20 @@ class Greet extends Command {
    * @param  {Object} options [description]
    */
   * handle (args, options) {
-    this.info(`Hello ${args.name}`)
+    const email = yield this.ask('User email:').print()
+    const password = yield this.secure('User password:').print()
+
+    console.log({email, password})
+
+
+    const User = use('App/Model/User')
+    const Hash = use('Hash')
+
+    const u = yield User.create({email, password: password })
+
+    this.success(`Done creating user ${email} with id: ${u.id}`)
+
+    process.exit()
   }
 
 }
