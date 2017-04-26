@@ -1,0 +1,23 @@
+{% extends "master" %}
+
+{% block content %}
+  <a href="/crm/messages">Back</a>
+
+  <h2 class="title">Name: {{message.name}}</h2>
+  <h2 class="title">Email: {{message.email}}</h2>
+
+  <h3 class="subtitle">Message:</h3>
+
+  <form method="POST" action="/crm/messages/{{message.id}}/contacted">
+    {{csrfField}}
+
+    {% if message.contacted %}
+      <button name="contacted" value="false" class="button is-success">Contacted</button>
+    {% else %}
+      <button name="contacted" value="true" class="button is-danger">Not Contacted</button>
+    {% endif %}
+  </form>
+
+
+  <p>{{message.message}}</p>
+{% endblock %}

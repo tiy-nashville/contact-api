@@ -1,0 +1,37 @@
+{% extends "master" %}
+
+{% block content %}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Contacted</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for message in messages %}
+        <tr>
+          <td>{{message.name}}</td>
+          <td>{{message.email}}</td>
+          <td>
+            <form method="POST" action="/crm/messages/{{message.id}}/contacted">
+              {{csrfField}}
+
+              {% if message.contacted %}
+                <button name="contacted" value="false" class="button is-success">Contacted</button>
+              {% else %}
+                <button name="contacted" value="true" class="button is-danger">Not Contacted</button>
+              {% endif %}
+            </form>
+          </td>
+          <td>
+            <a href="/crm/messages/{{message.id}}">Read More</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
